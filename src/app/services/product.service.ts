@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../common/product';
 
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -31,5 +32,10 @@ export class ProductService {
   getProductCategories(): Observable<any>{
     console.log(`${this.baseUrl}/product-category`);    
     return this.httpClient.get(`${this.baseUrl}/product-category`);
+  }
+  getProductById(id : number) : Observable<any> {
+    console.log(`${this.baseUrl}/product/${id}`);
+    return this.httpClient.get(`${this.baseUrl}/products/${id}`);
+
   }
 }
