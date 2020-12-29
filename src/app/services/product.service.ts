@@ -19,9 +19,13 @@ export class ProductService {
   */
  
   getProductList(theCategoryId : number) : Observable<any> {
-    console.log(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`);
-    
+
+    console.log(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`); 
     return this.httpClient.get(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`);  
 
+  }
+  getProductCategories(): Observable<any>{
+    console.log(`${this.baseUrl}/product-category`);    
+    return this.httpClient.get(`${this.baseUrl}/product-category`);
   }
 }
