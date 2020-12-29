@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './componentss/product-list/product-list.component';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { ProductListComponent } from './componentss/product-list/product-list.co
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
