@@ -10,9 +10,18 @@ export class ProductService {
   private baseUrl = "http://localhost:8080/api/";
   constructor( private httpClient: HttpClient) { }
 
+  /*
   getProductList() : Observable<any> {
 
-    return this.httpClient.get(`${this.baseUrl}`+'products');  
+    return this.httpClient.get(`${this.baseUrl}/products`);  
+
+  } 
+  */
+ 
+  getProductList(theCategoryId : number) : Observable<any> {
+    console.log(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`);
+    
+    return this.httpClient.get(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`);  
 
   }
 }
