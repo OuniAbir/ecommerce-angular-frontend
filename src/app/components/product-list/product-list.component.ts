@@ -13,14 +13,38 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
+  searchMode : boolean = false;
+
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
-      ()=> {  this.getProducts(); }
+      ()=> {  this.handleListProducts(); }
     );  }
-  getProducts() {
+  
+  handleListProducts(){
+      this.searchMode = this.route.snapshot.paramMap.has("keyword") ;
+      if (this.searchMode){
+        this.getProductsByNameContaining();
+      }
+      else {
+        this.getProductsByCategoryId();
+      }
+
+
+    }
+  getProductsByNameContaining() {
+    
+    const theKeyWord: string = this.route.snapshot.paramMap.get('keyword');
+    this.productService.getProductsByNameContaining(theKeyWord).subscribe(
+      data => {
+        this.products = data;
+      }
+    ) ;
+  }
+  
+  getProductsByCategoryId() {
 
     //  check if "id" parameter is availabel
     const hasCotegoryId: boolean = this.route.snapshot.paramMap.has('id');

@@ -7,6 +7,7 @@ import { Product } from '../common/product';
   providedIn: 'root'
 })
 export class ProductService {
+
   private baseUrl = "http://localhost:8080/api/";
   constructor( private httpClient: HttpClient) { }
 
@@ -17,7 +18,10 @@ export class ProductService {
 
   } 
   */
- 
+ getProductsByNameContaining(theKeyWord: string) : Observable<any>{
+   console.log(`http://localhost:8080/api/products/search/findByNameContaining?name=${theKeyWord}`);
+   return this.httpClient.get(`http://localhost:8080/api/products/search/findByNameContaining?name=${theKeyWord}`)
+}
   getProductList(theCategoryId : number) : Observable<any> {
 
     console.log(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`); 
