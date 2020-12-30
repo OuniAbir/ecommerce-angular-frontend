@@ -41,7 +41,12 @@ this.listCartDetails();
 
     // u need to compute cart total price and quantities because u may do some changes in the cart details page 
     this.cartService.computeCartTotal();
-    
+
   }
   
+  incrementQuantity(cartItem : CartItem)
+  {
+    this.cartService.addToCart(cartItem);
+  }
+
 }
