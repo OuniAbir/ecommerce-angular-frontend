@@ -9,15 +9,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartService } from './services/cart.service';
 
-const routes : Routes = [
-  {path: 'products/:id', component : ProductDetailsComponent },
-  {path: 'category/:id', component : ProductListComponent},
-  {path: 'category',  component : ProductListComponent},
-  {path: 'products', component : ProductListComponent },
-  {path : 'search/:keyword' , component : ProductListComponent },
-  {path: '', redirectTo: '/products', pathMatch : 'full'},
-  {path: '**', redirectTo: '/products', pathMatch : 'full'} 
+const routes: Routes = [
+  { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'category/:id', component: ProductListComponent },
+  { path: 'category', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
+  { path: 'search/:keyword', component: ProductListComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '**', redirectTo: '/products', pathMatch: 'full' }
 ]
 
 @NgModule({
@@ -26,7 +28,8 @@ const routes : Routes = [
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ const routes : Routes = [
 
 
   ],
-  providers: [ ProductService],
+  providers: [ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
