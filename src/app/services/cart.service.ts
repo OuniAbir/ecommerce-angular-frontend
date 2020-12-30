@@ -31,6 +31,8 @@ if (this.cartItems.length > 0) {
   }
 }
 
+
+
 console.log(`the item already exsist : ${alreadyExsistInCart}`);
 
 if (alreadyExsistInCart){
@@ -65,6 +67,26 @@ computeCartTotal(){
   //publish the new values to all subscribers 
   this.totalPrice.next(totalPriceValue);
   this.totalQuantity.next(totalQuantityValue);
+}
+
+DecrementQuantity(theItem : CartItem){
+  theItem.quantity -- ;
+
+  if (theItem.quantity === 0) {
+    // the item no longer exsist so remove it from the table 
+    this.removeItems(theItem);
+  } else {
+    this.computeCartTotal();
+  }
+}
+removeItems(theItem : CartItem){
+  //get the index of the item in the cartItems array 
+  const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id);
+  //if found, means greater than -1 , then remove it from thee array
+  if (itemIndex > -1) {
+    this.cartItems.splice(itemIndex, 1 );
+    this.computeCartTotal();    
+  }
 }
 
 }
