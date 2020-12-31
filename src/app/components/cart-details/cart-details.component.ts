@@ -13,7 +13,9 @@ export class CartDetailsComponent implements OnInit {
   totalQuantity: number = 0;
   totalPrice: number = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+
+  }
 
   ngOnInit(): void {
 
@@ -49,8 +51,8 @@ export class CartDetailsComponent implements OnInit {
   }
   DecrementQuantity(theItem: CartItem) {
     this.cartService.DecrementQuantity(theItem);
-
   }
+
   removeItems(theItem: CartItem) {
     this.cartService.removeItems(theItem);
   }

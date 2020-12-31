@@ -20,10 +20,8 @@ let theexsistingCartItem : CartItem = undefined ;
 if (this.cartItems.length > 0) {
   //if there's items in the cart then check
   // if this item already exsist in the cartitems
-  for (let item of this.cartItems)
-  {
-    if (item.id === theCartItem.id)
-    {
+      for (let item of this.cartItems) {
+        if (item.id === theCartItem.id) {
       theexsistingCartItem = item ;
       alreadyExsistInCart = true ;
       break;
@@ -32,23 +30,17 @@ if (this.cartItems.length > 0) {
 }
 
 
-
-console.log(`the item already exsist : ${alreadyExsistInCart}`);
-
 if (alreadyExsistInCart){
   //increment the quantity
   theexsistingCartItem.quantity ++ ;
-  console.log(`the item already exsist , the quantity is : ${theCartItem.quantity}`);
   
   }
   else {
     // add to the cartItems 
     theCartItem.quantity = 1 ;
     this.cartItems.push(theCartItem);
-    console.log(`the item doesn't exsist the quantity is : ${theCartItem.quantity}`);
 
   }
-
   // Now finnaly we compute the total quantities and price
 this.computeCartTotal();
 }
@@ -58,8 +50,7 @@ computeCartTotal(){
   let totalPriceValue : number  = 0 ;
   let totalQuantityValue : number = 0;
 
-  for (let currentCartItem of this.cartItems )
-  {
+    for (let currentCartItem of this.cartItems) {
     totalPriceValue += currentCartItem.quantity * currentCartItem.unitPrice ;
     totalQuantityValue += currentCartItem.quantity ;
   }
@@ -72,16 +63,21 @@ computeCartTotal(){
 DecrementQuantity(theItem : CartItem){
   theItem.quantity -- ;
 
+
   if (theItem.quantity === 0) {
     // the item no longer exsist so remove it from the table 
     this.removeItems(theItem);
   } else {
+
     this.computeCartTotal();
+
   }
+
 }
+
 removeItems(theItem : CartItem){
   //get the index of the item in the cartItems array 
-  const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id);
+    const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id === theItem.id);
   //if found, means greater than -1 , then remove it from thee array
   if (itemIndex > -1) {
     this.cartItems.splice(itemIndex, 1 );
