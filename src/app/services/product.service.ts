@@ -9,7 +9,7 @@ import { Product } from '../common/product';
 })
 export class ProductService {
 
-  private baseUrl = "http://localhost:8080/api/";
+  private baseUrl = "http://localhost:8080/spring-mvc-ecommerce/api/";
   constructor( private httpClient: HttpClient) { }
 
   /*
@@ -20,8 +20,8 @@ export class ProductService {
   } 
   */
  getProductsByNameContaining(theKeyWord: string) : Observable<any>{
-   console.log(`http://localhost:8080/api/products/search/findByNameContaining?name=${theKeyWord}`);
-   return this.httpClient.get(`http://localhost:8080/api/products/search/findByNameContaining?name=${theKeyWord}`)
+   console.log(`http://localhost:8080/spring-mvc-ecommerce/api/products/search/findByNameContaining?name=${theKeyWord}`);
+   return this.httpClient.get(`http://localhost:8080/spring-mvc-ecommerce/api/products/search/findByNameContaining?name=${theKeyWord}`)
 }
   getProductList(theCategoryId : number) : Observable<any> {
 
