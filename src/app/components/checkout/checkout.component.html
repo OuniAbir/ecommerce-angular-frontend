@@ -95,7 +95,7 @@
            <label class="au-checkbox">
              <input type="checkbox" (change)="copyShippingToBillingAddress($event)">
              <span class="au-checkmark"></span>Billing Address same as Shipping Address
-            </label>
+           </label>
          </div>
 
          <!-- billing address form  -->
@@ -219,6 +219,14 @@
 
          </div>
 
+         <!-- Order details -->
+         <div class="form-area">
+           <h3>Review Your Order</h3>
+
+           <p>Total Quantity: {{ totalQuantity }}</p>
+           <p>Shipping: FREE</p>
+           <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+         </div>
 
          <!-- submit button-->
          <div class="text-center">
