@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
 import { CartService } from 'src/app/services/cart.service';
@@ -31,9 +31,10 @@ export class CheckoutComponent implements OnInit {
       customer: this.formBuilder.group({
         //define the formcontrol of thatformGroup
         //intiate the formControls value with emppty String
-        firsName: [''],
-        lastName: [''],
-        email: [''],
+        firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        email: new FormControl('',
+          [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       }),
       shipping: this.formBuilder.group({
         country: [''],
@@ -83,13 +84,16 @@ export class CheckoutComponent implements OnInit {
     this.getCreditCardMonths(startMonth);
   }
 
+  get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
+  get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
+  get email() { return this.checkoutFormGroup.get('customer.email'); }
+
 getStates(formGroupName : string ){
   const formGroup = this.checkoutFormGroup.get(formGroupName);
   const countryCode = formGroup.value.country.code ;
 
   this.checkoutFormService.getStatesByCountryCode(countryCode).subscribe(
-    data => 
-    {
+      data => {
       console.log("Retrived countries : " + JSON.stringify(data));        
       if (formGroupName === 'shipping') {
         this.shipppingAddressStates = data ;        
