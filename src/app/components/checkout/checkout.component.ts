@@ -127,6 +127,10 @@ getStates(formGroupName : string ){
     console.log(this.checkoutFormGroup.get('shipping').value);
     console.log(this.checkoutFormGroup.get('creditCard').value);
     console.log(this.checkoutFormGroup.get('billing').value);
+    // touching all the fields to trigger the display of the error messages 
+    if (this.checkoutFormGroup.invalid) {
+      this.checkoutFormGroup.markAllAsTouched();      
+    }
 
   }
   getCreditCardMonths(startMonth: number) {
