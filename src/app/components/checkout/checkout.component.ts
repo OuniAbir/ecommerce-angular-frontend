@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { CartService } from 'src/app/services/cart.service';
+import { CheckoutFormService } from 'src/app/services/checkout-form.service';
+
 
 @Component({
   selector: 'app-checkout',
@@ -14,7 +18,11 @@ export class CheckoutComponent implements OnInit {
   totalQuantity: number = 0;
   CreditCardYears: number[] = [];
   CreditCardMonths: number[] = [];
-  constructor(private formBuilder: FormBuilder, private cartService: CartService) { }
+  countries : Country[] = [] ;
+  shipppingAddressStates : State[]=[];
+  billingAddressStates : State[]=[];
+
+  constructor(private formBuilder: FormBuilder, private cartService: CartService, private checkoutFormService : CheckoutFormService) { }
 
   ngOnInit(): void {
 
@@ -51,6 +59,15 @@ export class CheckoutComponent implements OnInit {
         zipCode: ['']
       }),
     });
+    // populate the countries 
+    this.checkoutFormService.getCountries().subscribe(
+      data => {
+        console.log("Retrived countries : " + JSON.stringify(data));        
+        this.countries = data ;
+      }  
+    )
+
+
     // subscribe to cartService.totalQuantity
     this.cartService.totalQuantity.subscribe(
       totalQuantity => this.totalQuantity = totalQuantity
@@ -66,7 +83,28 @@ export class CheckoutComponent implements OnInit {
     this.getCreditCardMonths(startMonth);
   }
 
+getStates(formGroupName : string ){
+  const formGroup = this.checkoutFormGroup.get(formGroupName);
+  const countryCode = formGroup.value.country.code ;
 
+  this.checkoutFormService.getStatesByCountryCode(countryCode).subscribe(
+    data => 
+    {
+      console.log("Retrived countries : " + JSON.stringify(data));        
+      if (formGroupName === 'shipping') {
+        this.shipppingAddressStates = data ;        
+      } else {
+        this.billingAddressStates = data ;
+        
+      } ;
+      // select the first item by default
+        formGroup.get('state').setValue(data[0]);
+    }
+
+  )
+
+
+}
   copyShippingToBillingAddress(event) {
     if (event.target.checked) {
       this.checkoutFormGroup.controls.billing.setValue(this.checkoutFormGroup.controls.shipping.value);
