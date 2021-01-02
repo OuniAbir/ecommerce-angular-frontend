@@ -108,8 +108,12 @@ getStates(formGroupName : string ){
   copyShippingToBillingAddress(event) {
     if (event.target.checked) {
       this.checkoutFormGroup.controls.billing.setValue(this.checkoutFormGroup.controls.shipping.value);
+      // bug fix for states 
+      this.billingAddressStates = this.shipppingAddressStates ;
     } else {
       this.checkoutFormGroup.controls.billing.reset();
+      // bug fix for states 
+      this.billingAddressStates = [];
     }
   }
 
