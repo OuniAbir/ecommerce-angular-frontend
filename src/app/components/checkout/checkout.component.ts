@@ -4,7 +4,8 @@ import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
 import { CartService } from 'src/app/services/cart.service';
 import { CheckoutFormService } from 'src/app/services/checkout-form.service';
-
+import { CheckoutFormValidators } from 'src/app/validators/checkout-form-validators';
+ 
 
 @Component({
   selector: 'app-checkout',
@@ -31,8 +32,8 @@ export class CheckoutComponent implements OnInit {
       customer: this.formBuilder.group({
         //define the formcontrol of thatformGroup
         //intiate the formControls value with emppty String
-        firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        firstName: new FormControl('', [Validators.required, Validators.minLength(2), CheckoutFormValidators.notOnlyWhitespace]),
+        lastName: new FormControl('', [Validators.required, Validators.minLength(2), CheckoutFormValidators.notOnlyWhitespace]),
         email: new FormControl('',
           [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       }),
