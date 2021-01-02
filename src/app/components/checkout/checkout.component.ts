@@ -13,7 +13,7 @@ export class CheckoutComponent implements OnInit {
   totalPrice: number = 0;
   totalQuantity: number = 0;
   CreditCardYears: number[] = [];
-  CreditCardMonths :  number[] = [];
+  CreditCardMonths: number[] = [];
   constructor(private formBuilder: FormBuilder, private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -60,8 +60,10 @@ export class CheckoutComponent implements OnInit {
     this.cartService.totalPrice.subscribe(
       totalPrice => this.totalPrice = totalPrice
     );
-    this.CreditCardYears = this.getCreditCardYears();
-    this.CreditCardMonths = this.getCreditCardMonths();
+    const startMonth: number = new Date().getMonth() + 1;
+    console.log("startMonth: " + startMonth);
+    this.getCreditCardYears();
+    this.getCreditCardMonths(startMonth);
   }
 
 
@@ -81,17 +83,17 @@ export class CheckoutComponent implements OnInit {
     console.log(this.checkoutFormGroup.get('billing').value);
 
   }
-  getCreditCardMonths(): number[] {
+  getCreditCardMonths(startMonth: number) {
     let data: number[] = [];
     // build an array for "month" drop downList
     // start at the current month and loop until 12
-     for(let themonth : number = 1; themonth <= 12 ; themonth++){
-       data.push(themonth);
-     }
-     return data ;
+    for (let themonth: number = startMonth; themonth <= 12; themonth++) {
+      data.push(themonth);
+    }
+    this.CreditCardMonths = data;
   }
 
-  getCreditCardYears(): number[] {
+  getCreditCardYears() {
     let data: number[] = [];
     // build an array for "year" drop downList
     // start at the current year and loop for the next 10 
@@ -100,6 +102,24 @@ export class CheckoutComponent implements OnInit {
     for (let theYear = startYear; theYear <= endYear; theYear++) {
       data.push(theYear);
     }
-    return data;
+
+    this.CreditCardYears = data;
+  }
+
+  handleMonthsAndYears() {
+    const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
+    const currentYear: number = new Date().getFullYear();
+    const selectedYear: number = Number(creditCardFormGroup.value.expirationYear);
+    // if the current year equals the selected year, then start with the current month
+    let startMonth: number;
+    console.log(`new year selected : ${selectedYear}`);
+
+    if (currentYear === selectedYear) {
+      startMonth = new Date().getMonth() + 1;
+    }
+    else {
+      startMonth = 1;
+    }
+    this.getCreditCardMonths(startMonth);
   }
 }
