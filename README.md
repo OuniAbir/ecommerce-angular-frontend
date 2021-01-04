@@ -18,18 +18,21 @@ You should have the following items already installed
 
 2- Run all the scripts in this repository [sql scripts](https://bitbucket.org/abirouni/sql-scripts/src/master/).
 
-## Repository presontation
+## Repository presentation
 
-Repositry [V1_SpringBackend](https://bitbucket.org/abirouni/v1_springbackend/src/master/): it's the application backend developed using Spring FrameWork (Spring MVC, Spring REST, Hibernate).
-
-Repositry [V2_SpringBootBackend](https://bitbucket.org/abirouni/v2_springbootbackend/src/master/):  it's the application backend developed using SpringBoot Framework(Spring Data JPA, Spring Data REST).
-
-Repository angular-ecommerce : it's the application frontEnd developed using angular Framework and bootstrap.
-
-If your are going to use the repositry V1_SpringBackend, for the frontend you need to use this branch [ForSpringMVC](https://bitbucket.org/abirouni/angular-ecommerce/src/ForSpringMVC/)of the angular-ecommerce repository.
+* Repositry [V1_SpringBackend](https://bitbucket.org/abirouni/v1_springbackend/src/master/): it's the application backend developed using Spring FrameWork (Spring MVC, Spring REST, Hibernate).
 
 
-If your are going to use the repositry V2_SpringBootBackend, for the frontend you need to use this branch [ForSpringBoot](https://bitbucket.org/abirouni/angular-ecommerce/src/ForSpringBoot/) of the angular-ecommerce repository.
+* Repositry [V2_SpringBootBackend](https://bitbucket.org/abirouni/v2_springbootbackend/src/master/):  it's the application backend developed using SpringBoot Framework(Spring Data JPA, Spring Data REST).
+
+
+* Repository angular-ecommerce : it's the application frontEnd developed using angular Framework and bootstrap.
+
+
+** If your are going to use the repositry V1_SpringBackend, for the frontend you need to use this branch [ForSpringMVC](https://bitbucket.org/abirouni/angular-ecommerce/src/ForSpringMVC/)of the angular-ecommerce repository.
+
+
+** If your are going to use the repositry V2_SpringBootBackend, for the frontend you need to use this branch [ForSpringBoot](https://bitbucket.org/abirouni/angular-ecommerce/src/ForSpringBoot/) of the angular-ecommerce repository.
 
 
 ## Security
