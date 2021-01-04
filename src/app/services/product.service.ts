@@ -21,14 +21,14 @@ export class ProductService {
 
   }
   */
-  getProductsByNameContaining(theKeyWord: string): Observable<any> {
+  getProductsByNameContaining(theKeyWord: string): Observable<Product[]> {
 
     console.log(`${this.baseUrl}/products/search/findByNameContaining?name=${theKeyWord}`);
     //return this.httpClient.get(`http://localhost:8080/spring-mvc-ecommerce/api/products/search/findByNameContaining?name=${theKeyWord}`)
     return this.httpClient.get<GetResponseProducts>(`${this.baseUrl}/products/search/findByNameContaining?name=${theKeyWord}`)
     .pipe(map(response => response._embedded.products));
   }
-  getProductList(theCategoryId: number): Observable<any> {
+  getProductList(theCategoryId: number):Observable<Product[]> {
 
     console.log(`${this.baseUrl}/products/search/findByCategoryId?id=${theCategoryId}`);
     //return this.httpClient.get(`${this.baseUrl}/products/search/findByCategoryid?Categoryid=${theCategoryId}`);
@@ -36,7 +36,7 @@ export class ProductService {
     .pipe(map(response => response._embedded.products));
 
   }
-  getProductCategories(): Observable<any> {
+  getProductCategories(): Observable<ProductCategory[]> {
     console.log(`${this.baseUrl}/product-category`);
     //return this.httpClient.get(`${this.baseUrl}/product-category`);
 
@@ -46,9 +46,7 @@ export class ProductService {
 
   getProductById(id: number): Observable<any> {
     console.log(`${this.baseUrl}/product/${id}`);
-    //return this.httpClient.get(`${this.baseUrl}/products/${id}`);
-    return this.httpClient.get<GetResponseProducts>(`${this.baseUrl}/products/${id}`)
-    .pipe(map(response => response._embedded.products));
+    return this.httpClient.get(`${this.baseUrl}/products/${id}`);
   }
 }
 
