@@ -1,27 +1,121 @@
-# AngularEcommerce
+# Ecommerce Web Store
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+This web application allow users to purchase products online.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Java Development Environment
 
-## Code scaffolding
+You should have the following items already installed 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+	-JDK
+	-Maven
+	
+## DataBase 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1- You should have MySQL Database and MySQL Workbench instaled.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2- Run all the scripts in this repository [sql scripts](https://bitbucket.org/abirouni/sql-scripts/src/master/).
 
-## Running end-to-end tests
+## Repository presontation
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Repositry [V1_SpringBackend](https://bitbucket.org/abirouni/v1_springbackend/src/master/): it's the application backend developed using Spring FrameWork (Spring MVC, Spring REST, Hibernate).
 
-## Further help
+Repositry [V2_SpringBootBackend](https://bitbucket.org/abirouni/v2_springbootbackend/src/master/):  it's the application backend developed using SpringBoot Framework(Spring Data JPA, Spring Data REST).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Repository angular-ecommerce : it's the application frontEnd developed using angular Framework and bootstrap.
+
+If your are going to use the repositry V1_SpringBackend, for the frontend you need to use this branch [ForSpringMVC](https://bitbucket.org/abirouni/angular-ecommerce/src/ForSpringMVC/)of the angular-ecommerce repository.
+
+
+If your are going to use the repositry V2_SpringBootBackend, for the frontend you need to use this branch [ForSpringBoot](https://bitbucket.org/abirouni/angular-ecommerce/src/ForSpringBoot/) of the angular-ecommerce repository.
+
+
+## Security
+
+the application provide : Login/logout, User Registration services.
+
+
+Security is implemented using Okta (cloud based security solution).
+
+## Usage 
+
+1- Download the backend and run it on the http://localhost:8080
+
+
+2- Download the Frontend and run it using : ng serve --open, the application will be opened on the link : http://localhost:4200
+
+
+## Application pages
+
+
+1- Login/Sign Up page :
+
+
+![LoggedInPage](ApplicationPages/LogIn_SignUp.PNG)
+
+
+
+
+2- Welcome page :
+
+
+![Welcome page ](ApplicationPages/LoggedInPage.PNG )
+
+
+
+
+3- Search product by name :
+
+
+![SearchByNameContaining](ApplicationPages/SearchByNameContaining.PNG)
+
+
+
+
+4- Product Details page :
+
+
+![ProductDtail](ApplicationPages/ProductDtail.PNG)
+
+
+
+5- Only for logged in user page :
+
+
+![OnlyForLoggedIn](ApplicationPages/OnlyForLoggedIn.PNG)
+
+
+
+6- Cart Status page :
+
+
+![CartStatusPage](ApplicationPages/CartStatusPage.PNG)
+
+
+
+
+7- Checkout Form page :
+
+
+
+![CheckoutPage1](ApplicationPages/CheckoutPage1.PNG)
+
+
+
+
+![CheckoutPage2](ApplicationPages/CheckoutPage2.PNG)
+
+
+
+
+8- Submit your order :
+
+
+
+![CheckoutSubmit](ApplicationPages/CheckoutSubmit.PNG)
+
+
+
+
