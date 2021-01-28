@@ -1,6 +1,16 @@
-# Ecommerce Web Store
+# Ecommerce Web application
 
 This web application allow users to purchase products online.
+
+This application built using Java 8, Spring WebMVC, Spring ORM, Hibernate, Lombok - You can find the backend source code here  https://github.com/OuniAbir/ecommerce-spring-backend
+
+
+The frontend is built using Angular v11.
+
+# Deploy
+
+The Application Deploy Link : currently still Working on the Deploy
+
 
 
 ## Java Development Environment
@@ -17,22 +27,6 @@ You should have the following items already installed
 
 
 2- Run all the scripts in this repository [sql scripts](https://bitbucket.org/abirouni/sql-scripts/src/master/).
-
-## Repository presentation
-
-* Repositry [V1_SpringBackend](https://github.com/OuniAbir/ecommerce-spring-backend): it's the application backend developed using Spring FrameWork (Spring MVC, Spring REST, Hibernate).
-
-
-* Repositry [V2_SpringBootBackend](https://github.com/OuniAbir/ecommerce-springboot-backend):  it's the application backend developed using SpringBoot Framework(Spring Data JPA, Spring Data REST).
-
-
-* Repository angular-ecommerce : it's the application frontEnd developed using angular Framework and bootstrap.
-
-
-** If your are going to use the repositry V1_SpringBackend, for the frontend you need to use this branch [ForSpringMVC](https://github.com/OuniAbir/ecommerce-angular-frontend/tree/ForSpringMVC)of the angular-ecommerce repository.
-
-
-** If your are going to use the repositry V2_SpringBootBackend, for the frontend you need to use this branch [ForSpringBoot](https://github.com/OuniAbir/ecommerce-angular-frontend/tree/ForSpringBoot) of the angular-ecommerce repository.
 
 
 ## Security
